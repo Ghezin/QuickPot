@@ -34,7 +34,7 @@ class EventListener implements Listener{
 		$controls=$this->plugin->getPlayerControls($player->getName());
 		if($packet instanceof LoginPacket){
 			$this->plugin->controls[$packet->username ?? "unavailable"]=$packet->clientData["CurrentInputMode"];
-			$this->plugin->os[$packet->username ?? "unavailable"]=$packet->clientData["DeviceOS"];
+
 		}
 		if($packet::NETWORK_ID===LevelSoundEventPacket::NETWORK_ID and $packet->sound===LevelSoundEventPacket::SOUND_ATTACK_NODAMAGE){
 			if($controls=="Touch" and $player->getInventory()->getItemInHand()->getId()===Item::SPLASH_POTION){
