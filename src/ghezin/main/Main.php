@@ -17,8 +17,10 @@ class Main extends PluginBase{
 	public function onEnable():void{
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 	}
-	public function getPlayerControls($player):?string{
-		if($player instanceof Player) $player=$player->getName();
+	public function getPlayerControls($player):string{
+		if($player instanceof Player){
+			$player=$player->getName();
+		}
 		if(!isset($this->controls[$player])){
 			return "NONE";
 		}else{
