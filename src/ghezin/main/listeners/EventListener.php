@@ -13,7 +13,6 @@ use pocketmine\event\server\DataPacketReceiveEvent;
 use pocketmine\network\mcpe\protocol\LoginPacket;
 use pocketmine\network\mcpe\protocol\LevelSoundEventPacket;
 use pocketmine\network\mcpe\protocol\AnimatePacket;
-use pocketmine\event\entity\ProjectileLaunchEvent;
 use ghezin\main\Main;
 
 class EventListener implements Listener{
@@ -62,10 +61,5 @@ class EventListener implements Listener{
 				}
 			}
 		}
-	}
-	public function onLaunch(ProjectileLaunchEvent $event){
-		$projectile=$event->getEntity();
-		$player=$projectile->getOwningEntity();
-		$player->sendMessage("Launched");
 	}
 }
