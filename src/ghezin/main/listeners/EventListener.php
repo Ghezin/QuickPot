@@ -31,7 +31,7 @@ class EventListener implements Listener{
 	public function onPacketReceived(DataPacketReceiveEvent $event){
 		$player=$event->getPlayer();
 		$packet=$event->getPacket();
-		$controls=$this->plugin->getPlayerControls($player->getName());
+		$controls=$this->plugin->getPlayerControls($player);
 		if($packet instanceof LoginPacket){
 			$this->plugin->controls[$packet->username ?? "unavailable"]=$packet->clientData["CurrentInputMode"];
 
@@ -52,7 +52,7 @@ class EventListener implements Listener{
 	public function onInteract(PlayerInteractEvent $event){
 		$player=$event->getPlayer();
 		$action=$event->getAction();
-		$controls=$this->plugin->getPlayerControls($player->getName());
+		$controls=$this->plugin->getPlayerControls($player);
 		if($controls=="Touch" and $action===PlayerInteractEvent::RIGHT_CLICK_BLOCK){
 			if($player->getInventory()->getItemInHand()->getId()===Item::SPLASH_POTION){
 				$player->getInventory()->getItemInHand()->onClickAir($player, $player->getDirectionVector());
