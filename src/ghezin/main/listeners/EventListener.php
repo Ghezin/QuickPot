@@ -24,7 +24,7 @@ class EventListener implements Listener{
 	}
 	public function onQuit(PlayerQuitEvent $event){
 		$player=$event->getPlayer()->getName();
-		if(!isset($this->plugin->controls[$player])){
+		if(isset($this->plugin->controls[$player])){
 			unset($this->plugin->controls[$player]);
 		}
 	}
